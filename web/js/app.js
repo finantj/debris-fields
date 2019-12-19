@@ -8,7 +8,7 @@ const LR = {}
 LR.VERSION = "0.4.0"
 LR.APPAGENT = "http://store.rerum.io/v1/id/5da8c165d5de6ba6e2028474"
 
-//Make sure these behave like DEER.URLS, AKA when it is deployed to dev, use sandbox, not lived-religion-dev or the internal back end
+//Make sure these behave like DEER.URLS, AKA when it is deployed to dev, use sandbox, not lived-religion-dev or the inter$
 LR.URLS = {
     LOGIN: "login",
     LOGOUT: "logout",
@@ -20,6 +20,7 @@ LR.URLS = {
     QUERY: "query",
     SINCE: "http://store.rerum.io/v1/since"
 }
+
 
 
 LR.INPUTS = ["input", "textarea", "dataset", "select"]
@@ -97,6 +98,25 @@ LR.ui.toggleAreas = function(event){
             elem.classList.add("is-hidden")
         }
     }
+}
+
+LR.ui.toggleFieldNotes = function(event){
+    let floater = document.getElementById("fieldNotesFloater");
+    if(floater.getAttribute("expanded") === "true"){
+        floater.setAttribute("expanded", "false")
+        floater.style.width = "40px"
+        floater.style.height = "40px"
+        floater.style["box-shadow"] = "none";
+        document.querySelectorAll(".fieldNotesInnards").forEach(elem => elem.classList.add("is-hidden"))
+    }
+    else{
+        floater.setAttribute("expanded", "true")
+        floater.style.width = "550px"
+        floater.style.height = "400px"
+        floater.style["box-shadow"] = "1px 1px 18px black";
+        document.querySelectorAll(".fieldNotesInnards").forEach(elem => elem.classList.remove("is-hidden"))
+    }
+    
 }
 
 /**
@@ -184,6 +204,7 @@ LR.utils.disassociateObject = function(event, objectID, experienceID){
         trackedObjs =  trackedArr.filter(e => e !== objectID).join(delim)
         document.getElementById("objects").value = trackedObjs
         document.getElementById("objects").$isDirty = true //This DEER thing was tricky to know off hand.  3rd party developers may struggle to know to do this.
+        document.getElementById("theExperience").$isDirty = true
         //NOTE form.submit() does not create/fire the submit event.  This is a problem for our 3rd party software, DEER.
         document.getElementById("theExperience").querySelector("input[type='submit']").click()
         //FIXME this should really only happen if the form submit seen above is successful
@@ -199,6 +220,8 @@ LR.utils.disassociateObject = function(event, objectID, experienceID){
 LR.utils.setUserAttributionFields = function(userInfo){
     let attributionElemSelectors = ["[deer-key='creator']"]//Maybe should be a config or const?
     attributionElemSelectors.forEach(selector => document.querySelectorAll(selector).forEach(elem => elem.value = userInfo['@id']))
+    //Also populate anything that is supposed to know the username
+    document.querySelectorAll(".theUserName").forEach(elem => elem.innerHTML = userInfo.name)
 }
 
 /**

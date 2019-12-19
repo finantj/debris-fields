@@ -6,7 +6,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +33,7 @@ public class Logout extends HttpServlet {
         HttpSession sess = request.getSession();
         sess.removeAttribute("lr-user");
         response.getWriter().print("Logged Out");
+        response.sendRedirect("dashboard.html");  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
