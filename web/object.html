@@ -20,7 +20,7 @@
             <div class="card_body">
                 <form id="newObjectForm" class="hidden" deer-type="Thing" deer-context="http://schema.org">
                     <input type="hidden" deer-key="creator" value="loading"> <!-- Object I am entering -->
-                    <input type="hidden" deer-key="targetCollection" value="LivedReligionObjectsTest"> <!-- into this collection -->
+                    <input type="hidden" deer-key="targetCollection" value="CivilWarSTLObjecttest"> <!-- into this collection -->
                     <label>Name:</label>
                     <input type="text" deer-key="name">
                     <input id="additionalTypeInput" type="hidden" deer-key="additionalType">
@@ -62,7 +62,7 @@
                     <h4>History of this Object</h4>
                     <label>Select Former Location(s):</label>
                     <input type="hidden" deer-input-type="List" deer-key="LR:FormerLocations"/>
-                    <deer-view deer-collection="LivedReligionLocationsTest" deer-template="locationsMulti"></deer-view> 
+                    <deer-view deer-collection="CivilWarSTLLocationsTest" deer-template="locationsMulti"></deer-view> 
                     <label>Select Former Use(s):</label>
                     <input type="hidden" deer-key="LR:formerUses" deer-input-type="List">
                     <!-- Looking at these as "former types", so just reuse the type values -->
@@ -104,7 +104,7 @@
             </div>
         </div>
         <h3>Existing Objects</h3>
-        <deer-view deer-collection="LivedReligionObjectsTest" deer-link="?id="></deer-view>
+        <deer-view deer-collection="CivilWarSTLObjectsTest" deer-link="?id="></deer-view>
     </div>
     <lr-global-feedback></lr-global-feedback>
     <lr-footer></lr-footer>
