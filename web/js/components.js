@@ -1,10 +1,8 @@
 class LrFooter extends HTMLElement {
     connectedCallback() {
-        this.innerHTML = `<small>&copy;2019 Walter J. Ong, S.J. Center for Digital Humanities</small>
+        this.innerHTML = `<small>&copy;2020 Walter J. Ong, S.J. Center for Digital Humanities</small>
         <img class="brand" src="https://www.slu.edu/marcom/tools-downloads/imgs/logo/left-aligned/slu_logoleftaligned_rgb.png">
         <img class="brand" src="https://blog.ongcdh.org/blog/wp-content/uploads/2018/05/logo-dark.png">
-        <img class="brand" src="https://www.hluce.org/static/images/logo-hluce.png">
-        <small> V. ${LR.VERSION}</small>
         `
         this.classList.add('nav', 'nav-center', 'text-primary', 'is-fixed', 'is-full-width', 'is-vertical-align')
         this.style.bottom = 0
@@ -29,27 +27,29 @@ class LrNav extends HTMLElement {
             <a href="stories.html">Stories</a> 
             <a href="objects.html">Objects</a>
             <a href="people.html">People</a>
-            <a href="researchers.html">Researchers</a>
             `
             if(event.detail.user.roles.administrator){
-                this.querySelector('.tabs').innerHTML += `<a href="users.html">Users</a>`
+                this.querySelector('.tabs').innerHTML += ``
             }
         })
     }
     connectedCallback() {
         this.innerHTML = `<div class="nav-left">
-        <a class="brand" href="index.html"><img src="http://religioninplace.org/blog/wp-content/uploads/2019/04/LRDA-Logo.jpg"></a>
-        <div class="tabs">
-            <a href="places.html">Locations</a>
-            <a href="stories.html">Stories</a>
-            <a href="objects.html">Objects</a>
-            <a href="people.html">People</a>
-            <a href="researchers.html">Researchers</a>
+            <div class="tabs">
+                <a href="places.html">Locations</a>
+                <a href="stories.html">Stories</a>
+                <a href="objects.html">Objects</a>
+                <a href="people.html">People</a>
+            </div>
         </div>
-    </div>
-    <div class="nav-right">
-        <lr-login></lr-login>
-    </div>`
+        <div class="nav-center">
+            <a class="brand" href="index.html">
+                <img src="./logoFace.png">
+            </a>
+        </div>
+        <div class="nav-right">
+            <lr-login></lr-login>
+        </div>`
         this.classList.add('nav')
     }
 }
@@ -128,7 +128,7 @@ class LrLogin extends HTMLElement {
                 if (authenticatedUser && authenticatedUser["@id"]) {
                     dispatchEvent(new CustomEvent('lrUserKnown', { detail: { user: authenticatedUser } }))
                     localStorage.setItem("lr-user", JSON.stringify(authenticatedUser))
-                    this.innerHTML = `<span>
+                    this.innerHTML = `<span class="tabs">
                 Logged in as <strong>${authenticatedUser.name}</strong>
                 <a href="logout" onclick="localStorage.removeItem('lr-user')">Logout</a>
                 </span>`

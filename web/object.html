@@ -27,7 +27,7 @@
                     <label>Type:</label>
                     <div class="row">
                         <div data-rdf="SacredObject" class="bd-primary text-center card col" title="Sacred Object">
-                            <header>Sacred Object</header>
+                            <header>Scrapple</header>
                             <img class="hide-xs" src="https://icongr.am/material/star-four-points-outline.svg?size=64&color=##14854f" title="Sacred Object" alt="Sacred Object">
                         </div>
                         <div data-rdf="VisualArtwork" class="bd-primary text-center card col" title="Artwork">
@@ -39,7 +39,7 @@
                             <img class="hide-xs" src="https://icongr.am/material/book-open.svg?size=64&color=##14854f" title="Written Text" alt="Written Text">
                         </div>
                         <div data-rdf="CivicStructure" class="bd-primary text-center card col" title="Building">
-                            <header>Building</header>
+                            <header>Artifact</header>
                             <img class="hide-xs" src="https://icongr.am/material/office-building.svg?size=64&color=##14854f" title="Building" alt="Building">
                         </div>
                     </div>
@@ -59,18 +59,6 @@
                             })
                         }
                     </script>
-                    <div class="grouped">
-                        <label>Further Options</label>
-                        <select oninput="setPrimaryType(this)">
-                            <option value="LR:Clothing" context="http://id.loc.gov/vocabulary/ethnographicTerms/afset003521.html">Clothing</option>
-                            <option value="LR:Food" context="http://id.loc.gov/vocabulary/ethnographicTerms/afset007265.html">Food</option>
-                            <option value="LR:Natural" context=""">Natural</option>
-                            <option value="LR:Manufactured" context="">Manufactured</option>
-                            <option value="Found" context="http://id.loc.gov/vocabulary/ethnographicTerms/afset020912.html">Found</option>
-                            <option value="Spoken" context="http://id.loc.gov/vocabulary/ethnographicTerms/afset017218.html">Spoken</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
                     <h4>History of this Object</h4>
                     <label>Select Former Location(s):</label>
                     <input type="hidden" deer-input-type="List" deer-key="LR:FormerLocations"/>
